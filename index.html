@@ -883,6 +883,7 @@
       }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -920,9 +921,9 @@
         <button type="button" id="resetBtn" class="btn btn-reset">Reset</button>
         <button type="button" id="printBtn" class="btn btn-print">
           <svg width="16" height="16" fill="none" stroke="#38B6FF" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
           </svg>
-          <span>Print / Save PDF</span>
+          <span id="printBtnLabel">Download A4 PDF</span>
         </button>
       </div>
     </div>
@@ -1094,7 +1095,7 @@
 
       <!-- RIGHT COLUMN: A4 PRINTABLE QUOTATION & BILL OF MATERIALS -->
       <div>
-        <div class="bom-sheet">
+        <div class="bom-sheet" id="printableBomSheet">
 
           <!-- Offer Header -->
           <div class="doc-header">
@@ -1181,8 +1182,14 @@
             <div class="notes-title">Scope Notes &amp; Conditions:</div>
             <ul>
               <li><strong>Client-Supplied Equipment:</strong> EV charging station units are supplied by the Client and excluded from this quotation.</li>
-              <li><strong>Included Works:</strong> Rough-in raceways, THHN/THWN-2 copper feeders &amp; grounding, dedicated EV protection enclosure/RCBO, mounting, termination, insulation resistance testing, and commissioning.</li>
-              <li><strong>Exclusions:</strong> Civil works (concrete chipping/restoration beyond standard wall penetrations), utility meter upgrade, and LGU/building permit fees unless otherwise stated.</li>
+              <li><strong>Included Works:</strong> Standard uPVC rough-in raceways, THHN/THWN-2 copper feeders &amp; grounding, dedicated EV protection enclosure/RCBO, mounting, termination, insulation resistance testing, and commissioning.</li>
+              <li><strong>Basic Cost Exclusions:</strong>
+                <ul style="margin-top:3px;padding-left:16px;">
+                  <li>Main panel branch/feeder circuit breaker if there is no existing spare breaker in the panel (unless explicitly included above).</li>
+                  <li>Upgrading of existing upstream main circuit breakers, main service entrance cables, or distribution panels.</li>
+                  <li>Standard basic package uses <strong>uPVC pipes only</strong> (EMT/RSC metallic conduits, civil works/concrete chipping beyond standard wall penetrations, utility meter upgrades, and LGU/building permit fees are excluded unless otherwise stated).</li>
+                </ul>
+              </li>
             </ul>
           </div>
 
@@ -1599,67 +1606,94 @@
       buildEstimate();
     });
 
-    // Print / Save PDF Handler
-    function showMobilePrintHelper() {
-      let modal = document.getElementById('printHelperModal');
-      if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'printHelperModal';
-        modal.className = 'no-print';
-        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(13,22,35,0.68);display:flex;align-items:center;justify-content:center;padding:16px;';
-        modal.innerHTML =
-          '<div style="background:#fff;border-radius:16px;max-width:410px;width:100%;padding:20px;box-shadow:0 20px 40px rgba(0,0,0,0.28);border:1px solid #E2E8F0;">' +
-            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">' +
-              '<strong style="font-size:15px;color:#0D1623;">Save as A4 PDF (Mobile / Viewer)</strong>' +
-              '<button type="button" id="closePrintHelper" style="border:none;background:#F1F5F9;border-radius:8px;width:28px;height:28px;font-weight:700;cursor:pointer;">✕</button>' +
-            '</div>' +
-            '<p style="font-size:12.5px;color:#475569;margin:0 0 10px 0;line-height:1.5;">' +
-              'Your viewer blocked automatic print popups. To save this A4 quotation as a PDF:' +
-            '</p>' +
-            '<ol style="font-size:12.5px;color:#0F172A;margin:0 0 14px 0;padding-left:18px;line-height:1.6;">' +
-              '<li>Tap the <strong>Share icon</strong> (box with upward arrow) on your screen.</li>' +
-              '<li>Tap <strong>Print</strong> (or <strong>Open in Safari / Chrome</strong> first, then Share → <strong>Print</strong>).</li>' +
-              '<li>Tap <strong>Save to Files / Save as PDF</strong>.</li>' +
-            '</ol>' +
-            '<div style="display:flex;gap:8px;justify-content:flex-end;">' +
-              '<button type="button" id="sharePdfBtn" style="padding:8px 14px;border-radius:8px;border:none;background:#38B6FF;color:#0D1623;font-weight:700;font-size:12.5px;cursor:pointer;">Share / Print</button>' +
-              '<button type="button" id="retryPrintBtn" style="padding:8px 14px;border-radius:8px;border:none;background:#0D1623;color:#fff;font-weight:600;font-size:12.5px;cursor:pointer;">Close</button>' +
-            '</div>' +
-          '</div>';
-        document.body.appendChild(modal);
-        document.getElementById('closePrintHelper').addEventListener('click', function() { modal.remove(); });
-        document.getElementById('retryPrintBtn').addEventListener('click', function() { modal.remove(); });
-        document.getElementById('sharePdfBtn').addEventListener('click', function() {
-          if (navigator.share) {
-            navigator.share({
-              title: document.getElementById('metaSubject').value || 'Hornet Electric EV Charger Offer',
-              text: 'Hornet Electric EV Charger Quotation — Total Offer: ' + document.getElementById('topTotalOffer').textContent
-            }).catch(function() {});
-          } else {
-            alert('Tap the Share icon on your toolbar, then select Print -> Save as PDF.');
+    // Direct A4 PDF Download Handler (iPhone Safari/Chrome, Android & Desktop)
+    async function downloadA4Pdf() {
+      const btn = el.printBtn;
+      const btnLabel = document.getElementById('printBtnLabel');
+      const sourceSheet = document.getElementById('printableBomSheet');
+      const refText = (el.quoteRefNo.textContent || 'HE-EV').replace(/[^a-zA-Z0-9_-]/g, '').replace(/^REF/, '');
+      const filename = 'Hornet_Electric_Quotation_' + (refText || 'EV') + '.pdf';
+
+      btn.disabled = true;
+      btnLabel.textContent = 'Generating PDF...';
+
+      // Build clean A4 clone with input values converted to crisp static text
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'position:fixed;left:-9999px;top:0;width:794px;background:#FFFFFF;padding:24px 28px;color:#0F172A;z-index:-1;';
+
+      const clone = sourceSheet.cloneNode(true);
+      clone.style.border = 'none';
+      clone.style.boxShadow = 'none';
+      clone.style.padding = '0';
+      clone.style.borderRadius = '0';
+      clone.style.width = '100%';
+
+      // Replace <input> fields inside clone with static text spans so values render cleanly in PDF
+      const origInputs = sourceSheet.querySelectorAll('input.doc-input');
+      const cloneInputs = clone.querySelectorAll('input.doc-input');
+      cloneInputs.forEach(function(inp, idx) {
+        const span = document.createElement('span');
+        span.textContent = origInputs[idx] ? origInputs[idx].value : inp.value;
+        span.style.cssText = 'font-weight:600;color:#0F172A;font-size:12px;';
+        inp.parentNode.replaceChild(span, inp);
+      });
+
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      try {
+        if (typeof html2pdf !== 'undefined') {
+          const opt = {
+            margin: [8, 8, 8, 8],
+            filename: filename,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false, backgroundColor: '#FFFFFF' },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+          };
+
+          const worker = html2pdf().set(opt).from(wrapper);
+          const pdfBlob = await worker.outputPdf('blob');
+          const pdfFile = new File([pdfBlob], filename, { type: 'application/pdf' });
+
+          // Trigger direct download
+          const blobUrl = URL.createObjectURL(pdfBlob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          // On iOS Safari/Chrome, also offer native Share Sheet with actual PDF File if supported
+          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+          if (isIOS && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+            try {
+              await navigator.share({
+                files: [pdfFile],
+                title: filename
+              });
+            } catch (shareErr) {
+              // User cancelled share sheet; file was already downloaded via blob link
+            }
           }
-        });
+
+          setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 10000);
+        } else {
+          window.print();
+        }
+      } catch (err) {
+        try {
+          window.print();
+        } catch (e) {}
+      } finally {
+        wrapper.remove();
+        btn.disabled = false;
+        btnLabel.textContent = 'Download A4 PDF';
       }
     }
 
-    el.printBtn.addEventListener('click', function() {
-      let didPrint = false;
-      const onBeforePrint = function() { didPrint = true; };
-      window.addEventListener('beforeprint', onBeforePrint, { once: true });
-
-      try {
-        window.focus();
-        window.print();
-      } catch (e) {
-        didPrint = false;
-      }
-
-      setTimeout(function() {
-        if (!didPrint) {
-          showMobilePrintHelper();
-        }
-      }, 650);
-    });
+    el.printBtn.addEventListener('click', downloadA4Pdf);
 
     initPWA();
     initMetadata();
