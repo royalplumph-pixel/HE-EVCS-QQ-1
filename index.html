@@ -176,4 +176,1536 @@
       background: #1E293B;
     }
 
-    /* Main
+    /* Main Container */
+    .container {
+      max-width: 1152px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 16px 36px 16px;
+    }
+
+    /* Top Offer Banner */
+    .offer-banner {
+      background: var(--he-navy);
+      color: #FFFFFF;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(13, 22, 35, 0.14);
+      border: 1px solid #1E293B;
+      margin-bottom: 22px;
+    }
+
+    .offer-banner-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .offer-banner {
+        padding: 24px;
+      }
+      .offer-banner-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .offer-kicker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #7DD3FC;
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--he-blue);
+      display: inline-block;
+    }
+
+    .offer-amount {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin-top: 6px;
+      line-height: 1.1;
+    }
+
+    @media (min-width: 640px) {
+      .offer-amount {
+        font-size: 42px;
+      }
+    }
+
+    .offer-note {
+      font-size: 12px;
+      color: #94A3B8;
+      margin: 6px 0 0 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid #1E293B;
+    }
+
+    @media (min-width: 768px) {
+      .stats-grid {
+        padding-top: 0;
+        border-top: none;
+        min-width: 330px;
+      }
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    .stat-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-top: 2px;
+    }
+
+    .stat-val.blue {
+      color: var(--he-blue);
+    }
+
+    /* Two-Column Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 5fr 7fr;
+      }
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Cards */
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--he-border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--he-navy);
+      margin: 0;
+    }
+
+    .card-hint {
+      font-size: 11.5px;
+      color: var(--he-muted);
+      font-weight: 500;
+    }
+
+    /* Charger Rows */
+    .charger-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .charger-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--he-border);
+      background: #F8FAFC;
+    }
+
+    .charger-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--he-navy);
+    }
+
+    .charger-spec {
+      font-size: 11.5px;
+      color: var(--he-muted);
+      margin-top: 2px;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .qty-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #334155;
+      padding: 0;
+    }
+
+    .qty-btn.plus {
+      background: var(--he-blue);
+      border-color: var(--he-blue);
+      color: var(--he-navy);
+    }
+
+    .qty-input {
+      width: 46px;
+      height: 36px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: var(--he-navy);
+      padding: 0;
+    }
+
+    .qty-input:focus,
+    .dist-input:focus,
+    .doc-input:focus {
+      outline: none;
+      border-color: var(--he-blue);
+      box-shadow: 0 0 0 2px rgba(56, 182, 255, 0.2);
+    }
+
+    /* Distance Controls */
+    .dist-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dist-input {
+      width: 64px;
+      height: 32px;
+      text-align: right;
+      padding: 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      background: #F8FAFC;
+      color: var(--he-navy);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      outline: none;
+      margin: 6px 0;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--he-blue);
+      border: 3px solid var(--he-navy);
+      cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--he-blue);
+      border: 3px solid var(--he-navy);
+      cursor: pointer;
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid #F1F5F9;
+      margin: 14px 0;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+
+    /* Radio Option Cards */
+    .radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .radio-card {
+      position: relative;
+      cursor: pointer;
+      display: block;
+    }
+
+    .radio-card input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-box {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1.5px solid var(--he-border);
+      background: #FFFFFF;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .radio-card input:checked + .radio-box {
+      border-color: var(--he-navy);
+      background: #F0F9FF;
+    }
+
+    .radio-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--he-navy);
+    }
+
+    .radio-sub {
+      font-size: 11px;
+      color: var(--he-muted);
+      margin-top: 2px;
+    }
+
+    /* Toggle Switch */
+    .toggle-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider-round {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #CBD5E1;
+      transition: 0.2s;
+      border-radius: 999px;
+    }
+
+    .slider-round::before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.2s;
+      border-radius: 50%;
+    }
+
+    .switch input:checked + .slider-round {
+      background-color: var(--he-blue);
+    }
+
+    .switch input:checked + .slider-round::before {
+      transform: translateX(20px);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Right Column: Printable BOM Sheet */
+    .bom-sheet {
+      background: #FFFFFF;
+      border: 1px solid var(--he-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    @media (min-width: 640px) {
+      .bom-sheet {
+        padding: 26px;
+      }
+    }
+
+    .doc-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--he-navy);
+    }
+
+    @media (min-width: 640px) {
+      .doc-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .doc-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-logo {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      min-height: 38px;
+    }
+
+    .doc-company {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--he-navy);
+      line-height: 1.1;
+    }
+
+    .doc-company span {
+      color: var(--he-blue);
+    }
+
+    .doc-legal {
+      font-size: 11px;
+      color: var(--he-muted);
+      margin-top: 3px;
+    }
+
+    .doc-ref-wrap {
+      text-align: left;
+    }
+
+    @media (min-width: 640px) {
+      .doc-ref-wrap {
+        text-align: right;
+      }
+    }
+
+    .doc-type {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--he-navy);
+    }
+
+    .doc-ref {
+      font-size: 11px;
+      color: var(--he-muted);
+      margin-top: 2px;
+    }
+
+    /* Meta Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--he-border);
+      font-size: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .meta-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      color: #334155;
+      width: 68px;
+      flex-shrink: 0;
+    }
+
+    .doc-input {
+      width: 100%;
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      color: #0F172A;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Table */
+    .table-wrap {
+      margin-top: 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table.ee-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    table.ee-table th {
+      background: var(--he-navy);
+      color: #FFFFFF;
+      font-weight: 700;
+      padding: 9px 10px;
+      border: 1px solid #334155;
+      white-space: nowrap;
+    }
+
+    table.ee-table td {
+      padding: 9px 10px;
+      border: 1px solid #CBD5E1;
+      vertical-align: top;
+      color: #1E293B;
+    }
+
+    table.ee-table tr.cat-row td {
+      background: #F1F5F9;
+      font-weight: 700;
+      color: var(--he-navy);
+      padding: 7px 10px;
+    }
+
+    table.ee-table tfoot td {
+      background: #F0F9FF;
+      font-weight: 800;
+      color: var(--he-navy);
+      border-top: 2px solid var(--he-navy);
+      padding: 11px 10px;
+    }
+
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .pre-line { white-space: pre-line; line-height: 1.45; }
+
+    /* Scope Notes & Signatory */
+    .notes-box {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--he-border);
+      font-size: 11px;
+      color: #475569;
+    }
+
+    .notes-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--he-navy);
+      margin-bottom: 6px;
+    }
+
+    .notes-box ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .notes-box li {
+      margin-bottom: 4px;
+    }
+
+    .sig-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 11.5px;
+    }
+
+    .sig-caption {
+      font-size: 10.5px;
+      color: var(--he-muted);
+    }
+
+    .sig-line {
+      margin-top: 26px;
+      border-top: 1px solid #94A3B8;
+      padding-top: 5px;
+      font-weight: 700;
+      color: var(--he-navy);
+    }
+
+    .sig-sub {
+      font-size: 10px;
+      color: var(--he-muted);
+    }
+
+    /* Remove spinner arrows */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    /* A4 Printable Rules */
+    @page {
+      size: A4 portrait;
+      margin: 12mm;
+    }
+
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .main-grid {
+        display: block !important;
+      }
+      .bom-sheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .doc-input {
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        font-weight: 600 !important;
+        color: #000000 !important;
+      }
+      table.ee-table {
+        font-size: 9pt !important;
+      }
+      table.ee-table th,
+      table.ee-table td {
+        padding: 5px 7px !important;
+      }
+      table.ee-table tr {
+        break-inside: avoid;
+      }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar no-print">
+    <div class="topbar-inner">
+      <div class="brand-wrap">
+        <div class="logo-box">
+          <svg width="26" height="26" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Hornet Electric Logo">
+            <defs>
+              <linearGradient id="heSkyGrad" x1="35" y1="15" x2="95" y2="85" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#7DD3FC"/>
+                <stop offset="55%" stop-color="#38B6FF"/>
+                <stop offset="100%" stop-color="#28A7EA"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 16H33V43H49L44 56H33V84H18V16Z" fill="#0D1623"/>
+            <path d="M68 56H96V67H61L68 56Z" fill="#0D1623"/>
+            <path d="M56 73H96V84H49L56 73Z" fill="#0D1623"/>
+            <path d="M51 12H112C111 26 101 35 86 36H69C64 36 61 38 59 41C63 39 68 38 74 38H96C94 49 84 55 71 55H61L57 60L33 108L43 66H34L51 12Z" fill="#0D1623"/>
+            <path d="M54 15H107C105 25 97 32 84 33H67C61 33 57 36 55 41L53 45C57 41 63 39 71 39H92C89 47 81 52 69 52H59L55 57L38 96L47 63H38L54 15Z" fill="#FFFFFF"/>
+            <path d="M56 17H103C101 24 94 29 83 30H66C59 30 55 34 52 40L49 48C54 43 61 41 70 41H88C85 46 78 49 68 49H57L53 54L41 86L50 61H41L56 17Z" fill="url(#heSkyGrad)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title-row">
+            <span class="brand-title">HORNET <span>ELECTRIC</span></span>
+            <span class="badge-pill">EV Charger Estimator</span>
+          </div>
+          <p class="brand-sub">Rapid Residential/Commercial EV Charger Installation Cost &amp; BOM Generator (PHP)</p>
+        </div>
+      </div>
+
+      <div class="actions-wrap">
+        <button type="button" id="resetBtn" class="btn btn-reset">Reset</button>
+        <button type="button" id="printBtn" class="btn btn-print">
+          <svg width="16" height="16" fill="none" stroke="#38B6FF" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+          </svg>
+          <span id="printBtnLabel">Download A4 PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="container">
+
+    <!-- TOP SUMMARY CARD: TOTAL OFFER -->
+    <section class="offer-banner no-print">
+      <div class="offer-banner-inner">
+        <div>
+          <div class="offer-kicker">
+            <span class="pulse-dot"></span>
+            <span>Total Offer (Installation &amp; Rough-In Scope)</span>
+          </div>
+          <div class="offer-amount mono" id="topTotalOffer">₱0.00</div>
+          <p class="offer-note">Client-supplied EV charger units excluded • Auto-computed real-time</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">Total Units</div>
+            <div class="stat-val mono" id="statUnits">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Connected Load</div>
+            <div class="stat-val blue mono" id="statKw">0.0 kW</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Cable Run</div>
+            <div class="stat-val mono" id="statDist">0 m</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="main-grid">
+
+      <!-- LEFT COLUMN: INPUTS -->
+      <div class="left-col no-print">
+
+        <!-- Step 1: EV Charger Quantities -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">1. EV Charger Quantities</h2>
+            <span class="card-hint">Client-Supplied Units</span>
+          </div>
+
+          <div class="charger-list">
+            <!-- 7kW Single Phase -->
+            <div class="charger-item">
+              <div>
+                <div class="charger-name">7kW Single Phase</div>
+                <div class="charger-spec">230V • 32A • 40AT 2P Protection</div>
+              </div>
+              <div class="qty-control">
+                <button type="button" data-target="qty7" data-delta="-1" class="qty-btn">−</button>
+                <input type="number" id="qty7" min="0" max="50" value="0" class="qty-input mono" />
+                <button type="button" data-target="qty7" data-delta="1" class="qty-btn plus">+</button>
+              </div>
+            </div>
+
+            <!-- 11kW 3-Phase -->
+            <div class="charger-item">
+              <div>
+                <div class="charger-name">11kW 3-Phase</div>
+                <div class="charger-spec">380V/400V • 16A • 20AT 3P Protection</div>
+              </div>
+              <div class="qty-control">
+                <button type="button" data-target="qty11" data-delta="-1" class="qty-btn">−</button>
+                <input type="number" id="qty11" min="0" max="50" value="0" class="qty-input mono" />
+                <button type="button" data-target="qty11" data-delta="1" class="qty-btn plus">+</button>
+              </div>
+            </div>
+
+            <!-- 22kW 3-Phase -->
+            <div class="charger-item">
+              <div>
+                <div class="charger-name">22kW 3-Phase</div>
+                <div class="charger-spec">380V/400V • 32A • 40AT 3P Protection</div>
+              </div>
+              <div class="qty-control">
+                <button type="button" data-target="qty22" data-delta="-1" class="qty-btn">−</button>
+                <input type="number" id="qty22" min="0" max="50" value="0" class="qty-input mono" />
+                <button type="button" data-target="qty22" data-delta="1" class="qty-btn plus">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Distance & Conduit -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">2. Distance from Main Panel</h2>
+            <div class="dist-input-wrap">
+              <input type="number" id="distanceInput" min="0" max="250" value="0" class="dist-input mono" />
+              <span class="card-hint" style="font-weight:700;color:#334155;">meters</span>
+            </div>
+          </div>
+
+          <input type="range" id="distanceSlider" min="0" max="120" value="0" />
+          <div class="scale-labels">
+            <span>0m</span>
+            <span>10m (Base)</span>
+            <span>30m</span>
+            <span>60m</span>
+            <span>120m</span>
+          </div>
+
+          <hr class="divider" />
+
+          <label class="field-label">Conduit / Raceway Type</label>
+          <div class="radio-grid">
+            <label class="radio-card">
+              <input type="radio" name="conduitType" value="PVC" checked />
+              <div class="radio-box">
+                <div class="radio-title">uPVC Conduit</div>
+                <div class="radio-sub">Standard Concealed/Surface</div>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="conduitType" value="EMT" />
+              <div class="radio-box">
+                <div class="radio-title">EMT Metallic Pipe</div>
+                <div class="radio-sub">Exposed / Parking Grade</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Existing Main Panel Circuit Breaker -->
+        <div class="card">
+          <div class="toggle-row">
+            <div>
+              <h2 class="card-title">3. Main Panel Circuit Breaker</h2>
+              <p class="brand-sub" style="margin-top:4px;">Include additional breaker in existing main panel?</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="includeMainBreaker" />
+              <span class="slider-round"></span>
+            </label>
+          </div>
+
+          <div id="breakerModeContainer" class="hidden">
+            <hr class="divider" />
+            <label class="field-label">Main Panel Breaker Configuration</label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="breakerMode" value="branch" checked />
+                <div class="radio-box">
+                  <div class="radio-title">Individual Branch CB</div>
+                  <div class="radio-sub">1 dedicated breaker per charger</div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="breakerMode" value="feeder" />
+                <div class="radio-box">
+                  <div class="radio-title">Single Feeder MCCB</div>
+                  <div class="radio-sub">1 main feeder breaker to sub-panel</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: A4 PRINTABLE QUOTATION & BILL OF MATERIALS -->
+      <div>
+        <div class="bom-sheet" id="printableBomSheet">
+
+          <!-- Offer Header -->
+          <div class="doc-header">
+            <div class="doc-brand">
+              <div class="doc-logo" id="docLogoContainer">
+                <svg width="38" height="38" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="heSkyGradDoc" x1="35" y1="15" x2="95" y2="85" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#7DD3FC"/>
+                      <stop offset="55%" stop-color="#38B6FF"/>
+                      <stop offset="100%" stop-color="#28A7EA"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M18 16H33V43H49L44 56H33V84H18V16Z" fill="#0D1623"/>
+                  <path d="M68 56H96V67H61L68 56Z" fill="#0D1623"/>
+                  <path d="M56 73H96V84H49L56 73Z" fill="#0D1623"/>
+                  <path d="M51 12H112C111 26 101 35 86 36H69C64 36 61 38 59 41C63 39 68 38 74 38H96C94 49 84 55 71 55H61L57 60L33 108L43 66H34L51 12Z" fill="#0D1623"/>
+                  <path d="M54 15H107C105 25 97 32 84 33H67C61 33 57 36 55 41L53 45C57 41 63 39 71 39H92C89 47 81 52 69 52H59L55 57L38 96L47 63H38L54 15Z" fill="#FFFFFF"/>
+                  <path d="M56 17H103C101 24 94 29 83 30H66C59 30 55 34 52 40L49 48C54 43 61 41 70 41H88C85 46 78 49 68 49H57L53 54L41 86L50 61H41L56 17Z" fill="url(#heSkyGradDoc)"/>
+                </svg>
+              </div>
+              <div>
+                <div class="doc-company">HORNET <span>ELECTRIC</span></div>
+                <div class="doc-legal">Hornet Energy, Electromechanical, and Mobility Solutions Inc.</div>
+              </div>
+            </div>
+            <div class="doc-ref-wrap">
+              <div class="doc-type">Electrical Engineering Offer</div>
+              <div class="doc-ref mono" id="quoteRefNo">REF: HE-EV-2026</div>
+            </div>
+          </div>
+
+          <!-- Project Metadata Fields -->
+          <div class="meta-grid">
+            <div class="meta-row">
+              <span class="meta-label">Date:</span>
+              <input type="text" id="metaDate" class="doc-input" />
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Purpose:</span>
+              <input type="text" id="metaPurpose" value="EE Offer — EV Charger Installation" class="doc-input" />
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Subject:</span>
+              <input type="text" id="metaSubject" value="Residential/Commercial EV Charger Rough-In & Installation" class="doc-input" />
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Location:</span>
+              <input type="text" id="metaLocation" placeholder="Enter client site address..." value="Residential/Commercial Site" class="doc-input" />
+            </div>
+          </div>
+
+          <!-- Bill of Materials Table -->
+          <div class="table-wrap">
+            <table class="ee-table">
+              <thead>
+                <tr>
+                  <th style="width:48px;">Item</th>
+                  <th>Description</th>
+                  <th class="text-center" style="width:54px;">QTY</th>
+                  <th class="text-center" style="width:54px;">Unit</th>
+                  <th class="text-right" style="width:94px;">Unit Price</th>
+                  <th class="text-right" style="width:106px;">Total Price</th>
+                </tr>
+              </thead>
+              <tbody id="bomTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5" class="text-right" style="text-transform:uppercase;letter-spacing:0.03em;">
+                    Total Offer (PHP)
+                  </td>
+                  <td class="text-right mono" style="font-size:14px;" id="bomGrandTotal">
+                    ₱0.00
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <!-- Terms & Notes -->
+          <div class="notes-box">
+            <div class="notes-title">Scope Notes &amp; Conditions:</div>
+            <ul>
+              <li><strong>Client-Supplied Equipment:</strong> EV charging station units are supplied by the Client and excluded from this quotation.</li>
+              <li><strong>Included Works:</strong> Standard uPVC rough-in raceways, THHN/THWN-2 copper feeders &amp; grounding, dedicated EV protection enclosure/RCBO, mounting, termination, insulation resistance testing, and commissioning.</li>
+              <li><strong>Basic Cost Exclusions:</strong>
+                <ul style="margin-top:3px;padding-left:16px;">
+                  <li>Main panel branch/feeder circuit breaker if there is no existing spare breaker in the panel (unless explicitly included above).</li>
+                  <li>Upgrading of existing upstream main circuit breakers, main service entrance cables, or distribution panels.</li>
+                  <li>Standard basic package uses <strong>uPVC pipes only</strong> (EMT/RSC metallic conduits, civil works/concrete chipping beyond standard wall penetrations, utility meter upgrades, and LGU/building permit fees are excluded unless otherwise stated).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Signatory Block -->
+          <div class="sig-grid">
+            <div>
+              <div class="sig-caption">Prepared &amp; Submitted By:</div>
+              <div class="sig-line">Hornet Electric Engineering Team</div>
+              <div class="sig-sub">Residential/Commercial EV Infrastructure Division</div>
+            </div>
+            <div>
+              <div class="sig-caption">Conforme / Approved By:</div>
+              <div class="sig-line">Client / Authorized Representative</div>
+              <div class="sig-sub">Signature Over Printed Name &amp; Date</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // =========================================================================
+    // 1. PWA ICON GENERATOR & MANIFEST REGISTRATION (iOS, Android, Windows, Mac)
+    // =========================================================================
+    function generateHornetAppIcon(size) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, size, size);
+
+      ctx.strokeStyle = '#E2E8F0';
+      ctx.lineWidth = Math.max(2, size * 0.015);
+      ctx.strokeRect(0, 0, size, size);
+
+      const scale = (size * 0.76) / 120;
+      const offset = (size - 120 * scale) / 2;
+
+      ctx.save();
+      ctx.translate(offset, offset);
+      ctx.scale(scale, scale);
+
+      ctx.fillStyle = '#0D1623';
+      ctx.fill(new Path2D('M18 16H33V43H49L44 56H33V84H18V16Z'));
+      ctx.fill(new Path2D('M68 56H96V67H61L68 56Z'));
+      ctx.fill(new Path2D('M56 73H96V84H49L56 73Z'));
+      ctx.fill(new Path2D('M51 12H112C111 26 101 35 86 36H69C64 36 61 38 59 41C63 39 68 38 74 38H96C94 49 84 55 71 55H61L57 60L33 108L43 66H34L51 12Z'));
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fill(new Path2D('M54 15H107C105 25 97 32 84 33H67C61 33 57 36 55 41L53 45C57 41 63 39 71 39H92C89 47 81 52 69 52H59L55 57L38 96L47 63H38L54 15Z'));
+
+      const grad = ctx.createLinearGradient(35, 15, 95, 85);
+      grad.addColorStop(0, '#7DD3FC');
+      grad.addColorStop(0.55, '#38B6FF');
+      grad.addColorStop(1, '#28A7EA');
+      ctx.fillStyle = grad;
+      ctx.fill(new Path2D('M56 17H103C101 24 94 29 83 30H66C59 30 55 34 52 40L49 48C54 43 61 41 70 41H88C85 46 78 49 68 49H57L53 54L41 86L50 61H41L56 17Z'));
+
+      ctx.restore();
+      return canvas.toDataURL('image/png');
+    }
+
+    function initPWA() {
+      try {
+        const icon180 = generateHornetAppIcon(180);
+        const icon192 = generateHornetAppIcon(192);
+        const icon512 = generateHornetAppIcon(512);
+
+        document.getElementById('appleTouchIcon').href = icon180;
+        document.getElementById('faviconIcon').href = icon192;
+
+        const manifestObj = {
+          name: 'Hornet Electric — EV Charger Estimator',
+          short_name: 'Hornet EV',
+          description: 'Rapid Residential & Commercial EV Charger Installation Cost & BOM Estimator',
+          start_url: './',
+          display: 'standalone',
+          orientation: 'any',
+          background_color: '#F8FAFC',
+          theme_color: '#0D1623',
+          icons: [
+            { src: icon192, sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+            { src: icon512, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+          ]
+        };
+
+        const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+        document.getElementById('pwaManifest').href = URL.createObjectURL(manifestBlob);
+      } catch (e) {}
+    }
+
+    // =========================================================================
+    // 2. FIXED AUTOMATIC ENGINEERING RATES (PHP)
+    // =========================================================================
+    const RATES = {
+      kw7: {
+        label: '7kW Single Phase (230V, 32A)',
+        kw: 7.0,
+        base10m: 15000,
+        excessPerMeter: 350,
+        wireSpec: '2x 8.0mm² + 1x 5.5mm² (G) THHN Copper Wire',
+        conduitSize: '3/4" (20mm)',
+        protectionSpec: 'NEMA 3R IP65 Enclosure w/ 40AT, 2P 230V Breaker & Type-A RCD Protection',
+        mainBranchBreakerSpec: '40AT, 100AF, 2P, 230V Bolt-On / Din-Rail Circuit Breaker (for Existing Main Panel)',
+        mainBranchBreakerPrice: 1850
+      },
+      kw11: {
+        label: '11kW 3-Phase (380V/400V, 16A)',
+        kw: 11.0,
+        base10m: 20000,
+        excessPerMeter: 480,
+        wireSpec: '4x 5.5mm² + 1x 3.5mm² (G) THHN Copper Wire',
+        conduitSize: '3/4" (20mm)',
+        protectionSpec: 'NEMA 3R IP65 Enclosure w/ 20AT, 3P/4P 400V Breaker & Type-B RCD Protection',
+        mainBranchBreakerSpec: '20AT, 100AF, 3P, 400V Molded Case / Din-Rail Circuit Breaker (for Existing Main Panel)',
+        mainBranchBreakerPrice: 3400
+      },
+      kw22: {
+        label: '22kW 3-Phase (380V/400V, 32A)',
+        kw: 22.0,
+        base10m: 25000,
+        excessPerMeter: 650,
+        wireSpec: '4x 8.0mm² + 1x 5.5mm² (G) THHN Copper Wire',
+        conduitSize: '1" (25mm)',
+        protectionSpec: 'NEMA 3R IP65 Enclosure w/ 40AT, 3P/4P 400V Breaker & Type-B RCD Protection',
+        mainBranchBreakerSpec: '40AT, 100AF, 3P, 400V Molded Case / Din-Rail Circuit Breaker (for Existing Main Panel)',
+        mainBranchBreakerPrice: 4200
+      },
+      emtPerMeterSurcharge: 140
+    };
+
+    const el = {
+      qty7: document.getElementById('qty7'),
+      qty11: document.getElementById('qty11'),
+      qty22: document.getElementById('qty22'),
+      distanceInput: document.getElementById('distanceInput'),
+      distanceSlider: document.getElementById('distanceSlider'),
+      includeMainBreaker: document.getElementById('includeMainBreaker'),
+      breakerModeContainer: document.getElementById('breakerModeContainer'),
+      topTotalOffer: document.getElementById('topTotalOffer'),
+      statUnits: document.getElementById('statUnits'),
+      statKw: document.getElementById('statKw'),
+      statDist: document.getElementById('statDist'),
+      bomTableBody: document.getElementById('bomTableBody'),
+      bomGrandTotal: document.getElementById('bomGrandTotal'),
+      metaDate: document.getElementById('metaDate'),
+      quoteRefNo: document.getElementById('quoteRefNo'),
+      resetBtn: document.getElementById('resetBtn'),
+      printBtn: document.getElementById('printBtn')
+    };
+
+    function formatPHP(amount) {
+      return '₱' + Number(amount || 0).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function initMetadata() {
+      const now = new Date();
+      const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+      el.metaDate.value = now.toLocaleDateString('en-US', opts);
+      const ymd = now.toISOString().slice(0, 10).replace(/-/g, '');
+      el.quoteRefNo.textContent = 'REF: HE-EV-' + ymd;
+    }
+
+    function getInputs() {
+      const q7 = Math.max(0, parseInt(el.qty7.value, 10) || 0);
+      const q11 = Math.max(0, parseInt(el.qty11.value, 10) || 0);
+      const q22 = Math.max(0, parseInt(el.qty22.value, 10) || 0);
+      const dist = Math.max(0, parseFloat(el.distanceInput.value) || 0);
+      const conduit = document.querySelector('input[name="conduitType"]:checked')?.value || 'PVC';
+      const includeBreaker = el.includeMainBreaker.checked;
+      const breakerMode = document.querySelector('input[name="breakerMode"]:checked')?.value || 'branch';
+      return { q7, q11, q22, dist, conduit, includeBreaker, breakerMode };
+    }
+
+    function buildEstimate() {
+      const { q7, q11, q22, dist, conduit, includeBreaker, breakerMode } = getInputs();
+
+      if (includeBreaker) {
+        el.breakerModeContainer.classList.remove('hidden');
+      } else {
+        el.breakerModeContainer.classList.add('hidden');
+      }
+
+      const totalUnits = q7 + q11 + q22;
+      const totalKw = (q7 * RATES.kw7.kw) + (q11 * RATES.kw11.kw) + (q22 * RATES.kw22.kw);
+
+      el.statUnits.textContent = totalUnits;
+      el.statKw.textContent = totalKw.toFixed(1) + ' kW';
+      el.statDist.textContent = dist + ' m';
+
+      if (totalUnits === 0) {
+        el.topTotalOffer.textContent = formatPHP(0);
+        el.bomGrandTotal.textContent = formatPHP(0);
+        el.bomTableBody.innerHTML = '<tr><td colspan="6" class="text-center" style="padding:28px 16px;color:#94A3B8;">Select EV charger quantities above to automatically generate the Cost Estimate &amp; Bill of Materials.</td></tr>';
+        return;
+      }
+
+      const rows = [];
+      let grandTotal = 0;
+
+      function addCategory(num, title) {
+        rows.push({ isCategory: true, itemNo: String(num), description: title });
+      }
+
+      function addItem(itemNo, description, qty, unit, unitPrice) {
+        const total = qty * unitPrice;
+        grandTotal += total;
+        rows.push({ isCategory: false, itemNo: itemNo, description: description, qty: qty, unit: unit, unitPrice: unitPrice, total: total });
+      }
+
+      addCategory(1, 'EV Charger Rough-In, Protection & Installation Package (Up to 10m Run)');
+      let subIdx = 1;
+
+      const configs = [
+        { qty: q7, cfg: RATES.kw7 },
+        { qty: q11, cfg: RATES.kw11 },
+        { qty: q22, cfg: RATES.kw22 }
+      ];
+
+      configs.forEach(function(entry) {
+        if (entry.qty > 0) {
+          const coveredDist = Math.min(dist, 10);
+          const desc = [
+            'Complete Installation Package for ' + entry.cfg.label,
+            '• Feeder: ' + entry.cfg.wireSpec + ' (' + coveredDist + 'm base run)',
+            '• Raceway: ' + entry.cfg.conduitSize + ' ' + conduit + ' Conduit & Fittings',
+            '• Local Protection: ' + entry.cfg.protectionSpec,
+            '• Includes charger wall mounting, termination, testing & commissioning'
+          ].join('\n');
+          addItem('1.' + (subIdx++), desc, entry.qty, 'lot', entry.cfg.base10m);
+        }
+      });
+
+      const excessMeters = Math.max(0, dist - 10);
+      if (excessMeters > 0) {
+        addCategory(2, 'Extended Feeder & Raceway Run Beyond 10m (' + excessMeters + 'm Excess per Unit)');
+        let distIdx = 1;
+        const voltageDropFactor = dist > 30 ? 1.15 : 1.0;
+        const vdNote = dist > 30 ? ' [Includes +15% voltage-drop conductor upsizing]' : '';
+
+        configs.forEach(function(entry) {
+          if (entry.qty > 0) {
+            const totalExcessM = excessMeters * entry.qty;
+            const ratePerM = Math.round(entry.cfg.excessPerMeter * voltageDropFactor);
+            const unitSuffix = entry.qty > 1 ? 's' : '';
+            const desc = 'Extended ' + entry.cfg.wireSpec + ' in ' + entry.cfg.conduitSize + ' ' + conduit + ' Conduit (' + excessMeters + 'm excess × ' + entry.qty + ' unit' + unitSuffix + ')' + vdNote;
+            addItem('2.' + (distIdx++), desc, totalExcessM, 'm', ratePerM);
+          }
+        });
+      }
+
+      let nextCat = excessMeters > 0 ? 3 : 2;
+      if (conduit === 'EMT' && dist > 0) {
+        addCategory(nextCat++, 'EMT Metallic Conduit & Compression Fittings Upgrade');
+        const totalConduitRun = dist * totalUnits;
+        const unitSuffix = totalUnits > 1 ? 's' : '';
+        addItem(
+          (nextCat - 1) + '.1',
+          'Upgrade from uPVC to Heavy-Duty Electrical Metallic Tubing (EMT) with steel couplings, connectors, and clamps (' + dist + 'm × ' + totalUnits + ' unit' + unitSuffix + ')',
+          totalConduitRun,
+          'm',
+          RATES.emtPerMeterSurcharge
+        );
+      }
+
+      if (includeBreaker) {
+        addCategory(nextCat++, 'Existing Main Panel Circuit Breaker Addition');
+        let cbIdx = 1;
+
+        if (breakerMode === 'branch') {
+          configs.forEach(function(entry) {
+            if (entry.qty > 0) {
+              addItem(
+                (nextCat - 1) + '.' + (cbIdx++),
+                entry.cfg.mainBranchBreakerSpec + ' — Supply & Installation',
+                entry.qty,
+                'set',
+                entry.cfg.mainBranchBreakerPrice
+              );
+            }
+          });
+        } else {
+          const hasThreePhase = (q11 + q22) > 0;
+          const poles = hasThreePhase ? '3P, 400V' : '2P, 230V';
+          const totalAmps = (q7 * 32) + (q11 * 16) + (q22 * 32);
+          let tripRating = 60;
+          let frameRating = 100;
+          let feederPrice = hasThreePhase ? 6800 : 4200;
+
+          if (totalAmps > 100) {
+            tripRating = 150;
+            frameRating = 225;
+            feederPrice = hasThreePhase ? 16500 : 11500;
+          } else if (totalAmps > 60) {
+            tripRating = 100;
+            frameRating = 100;
+            feederPrice = hasThreePhase ? 9500 : 6200;
+          } else if (totalAmps <= 40) {
+            tripRating = 50;
+            frameRating = 100;
+            feederPrice = hasThreePhase ? 5800 : 3500;
+          }
+
+          addItem(
+            (nextCat - 1) + '.1',
+            'Main EV Feeder Breaker: ' + tripRating + 'AT, ' + frameRating + 'AF, ' + poles + ' Industrial MCCB with busbar tapping & termination in Existing Main Panel',
+            1,
+            'set',
+            feederPrice
+          );
+        }
+      }
+
+      el.topTotalOffer.textContent = formatPHP(grandTotal);
+      el.bomGrandTotal.textContent = formatPHP(grandTotal);
+
+      el.bomTableBody.innerHTML = rows.map(function(row) {
+        if (row.isCategory) {
+          return '<tr class="cat-row"><td class="mono">' + escapeHtml(row.itemNo) + '</td><td colspan="5">' + escapeHtml(row.description) + '</td></tr>';
+        }
+        return '<tr>' +
+          '<td class="mono" style="color:#64748B;">' + escapeHtml(row.itemNo) + '</td>' +
+          '<td class="pre-line">' + escapeHtml(row.description) + '</td>' +
+          '<td class="text-center mono" style="font-weight:600;">' + row.qty + '</td>' +
+          '<td class="text-center" style="color:#64748B;">' + escapeHtml(row.unit) + '</td>' +
+          '<td class="text-right mono">' + formatPHP(row.unitPrice) + '</td>' +
+          '<td class="text-right mono" style="font-weight:700;color:#0D1623;">' + formatPHP(row.total) + '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    // Event Listeners
+    document.querySelectorAll('.qty-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const targetId = btn.getAttribute('data-target');
+        const delta = parseInt(btn.getAttribute('data-delta'), 10);
+        const input = document.getElementById(targetId);
+        const currentVal = parseInt(input.value, 10) || 0;
+        input.value = Math.max(0, Math.min(50, currentVal + delta));
+        buildEstimate();
+      });
+    });
+
+    [el.qty7, el.qty11, el.qty22].forEach(function(input) {
+      input.addEventListener('input', buildEstimate);
+      input.addEventListener('change', function() {
+        input.value = Math.max(0, Math.min(50, parseInt(input.value, 10) || 0));
+        buildEstimate();
+      });
+    });
+
+    el.distanceSlider.addEventListener('input', function() {
+      el.distanceInput.value = el.distanceSlider.value;
+      buildEstimate();
+    });
+
+    el.distanceInput.addEventListener('input', function() {
+      const val = Math.max(0, Math.min(250, parseFloat(el.distanceInput.value) || 0));
+      el.distanceSlider.value = Math.min(120, val);
+      buildEstimate();
+    });
+
+    el.distanceInput.addEventListener('change', function() {
+      const val = Math.max(0, Math.min(250, parseFloat(el.distanceInput.value) || 0));
+      el.distanceInput.value = val;
+      el.distanceSlider.value = Math.min(120, val);
+      buildEstimate();
+    });
+
+    document.querySelectorAll('input[name="conduitType"]').forEach(function(radio) {
+      radio.addEventListener('change', buildEstimate);
+    });
+
+    el.includeMainBreaker.addEventListener('change', buildEstimate);
+
+    document.querySelectorAll('input[name="breakerMode"]').forEach(function(radio) {
+      radio.addEventListener('change', buildEstimate);
+    });
+
+    el.resetBtn.addEventListener('click', function() {
+      el.qty7.value = 0;
+      el.qty11.value = 0;
+      el.qty22.value = 0;
+      el.distanceInput.value = 0;
+      el.distanceSlider.value = 0;
+      document.querySelector('input[name="conduitType"][value="PVC"]').checked = true;
+      el.includeMainBreaker.checked = false;
+      document.querySelector('input[name="breakerMode"][value="branch"]').checked = true;
+      buildEstimate();
+    });
+
+    // Direct A4 PDF Download Handler (Fixed for iOS Safari/Chrome Viewport & Logo Rendering)
+    async function downloadA4Pdf() {
+      const btn = el.printBtn;
+      const btnLabel = document.getElementById('printBtnLabel');
+      const sourceSheet = document.getElementById('printableBomSheet');
+      const refText = (el.quoteRefNo.textContent || 'HE-EV').replace(/[^a-zA-Z0-9_-]/g, '').replace(/^REF/, '');
+      const filename = 'Hornet_Electric_Quotation_' + (refText || 'EV') + '.pdf';
+
+      btn.disabled = true;
+      btnLabel.textContent = 'Generating PDF...';
+
+      // Keep wrapper inside visible viewport so iOS WebKit renders non-blank canvas
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'position:fixed;left:0;top:0;width:794px;background:#FFFFFF;padding:24px 28px;color:#0F172A;z-index:9999;pointer-events:none;opacity:0.01;';
+
+      const clone = sourceSheet.cloneNode(true);
+      clone.style.border = 'none';
+      clone.style.boxShadow = 'none';
+      clone.style.padding = '0';
+      clone.style.borderRadius = '0';
+      clone.style.width = '100%';
+
+      // Replace inline SVG logo with crisp PNG image in clone to prevent iOS html2canvas blank bug
+      const logoDiv = clone.querySelector('#docLogoContainer');
+      if (logoDiv) {
+        const img = document.createElement('img');
+        img.src = generateHornetAppIcon(120);
+        img.style.cssText = 'width:38px;height:38px;display:block;border-radius:6px;';
+        logoDiv.innerHTML = '';
+        logoDiv.appendChild(img);
+      }
+
+      // Convert <input> fields inside clone into static text spans
+      const origInputs = sourceSheet.querySelectorAll('input.doc-input');
+      const cloneInputs = clone.querySelectorAll('input.doc-input');
+      cloneInputs.forEach(function(inp, idx) {
+        const span = document.createElement('span');
+        span.textContent = origInputs[idx] ? origInputs[idx].value : inp.value;
+        span.style.cssText = 'font-weight:600;color:#0F172A;font-size:12px;';
+        inp.parentNode.replaceChild(span, inp);
+      });
+
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      // Allow DOM & image paint tick before capturing
+      await new Promise(function(resolve) { setTimeout(resolve, 120); });
+
+      try {
+        if (typeof html2pdf !== 'undefined') {
+          const opt = {
+            margin: [8, 8, 8, 8],
+            filename: filename,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+              scale: 2,
+              useCORS: true,
+              logging: false,
+              backgroundColor: '#FFFFFF',
+              scrollX: 0,
+              scrollY: 0,
+              windowWidth: 794
+            },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+          };
+
+          const worker = html2pdf().set(opt).from(clone);
+          const pdfBlob = await worker.outputPdf('blob');
+          const pdfFile = new File([pdfBlob], filename, { type: 'application/pdf' });
+
+          const blobUrl = URL.createObjectURL(pdfBlob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+          if (isIOS && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+            try {
+              await navigator.share({
+                files: [pdfFile],
+                title: filename
+              });
+            } catch (shareErr) {}
+          }
+
+          setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 10000);
+        } else {
+          window.print();
+        }
+      } catch (err) {
+        try {
+          window.print();
+        } catch (e) {}
+      } finally {
+        wrapper.remove();
+        btn.disabled = false;
+        btnLabel.textContent = 'Download A4 PDF';
+      }
+    }
+
+    el.printBtn.addEventListener('click', downloadA4Pdf);
+
+    initPWA();
+    initMetadata();
+    buildEstimate();
+  </script>
+</body>
+</html>
