@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#0D1623" />
   <meta name="description" content="Hornet Electric Rapid Residential/Commercial EV Charger Installation Cost & BOM Estimator" />
 
-  <!-- Dynamic App Icons & Manifest placeholders (populated on load from exact Hornet Electric Logo) -->
+  <!-- Dynamic App Icons & Manifest placeholders -->
   <link id="appleTouchIcon" rel="apple-touch-icon" sizes="180x180" href="" />
   <link id="faviconIcon" rel="icon" type="image/png" sizes="192x192" href="" />
   <link id="pwaManifest" rel="manifest" href="" />
@@ -826,6 +826,63 @@
       color: var(--he-muted);
     }
 
+    /* PDF Clone Compact 1-Page A4 Overrides */
+    .pdf-export-mode {
+      width: 720px !important;
+      max-width: 720px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      background: #FFFFFF !important;
+    }
+    .pdf-export-mode .doc-header {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-bottom: 10px !important;
+    }
+    .pdf-export-mode .doc-ref-wrap {
+      text-align: right !important;
+    }
+    .pdf-export-mode .meta-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 6px 16px !important;
+      padding: 10px 0 !important;
+      font-size: 11px !important;
+    }
+    .pdf-export-mode .table-wrap {
+      margin-top: 10px !important;
+      overflow: visible !important;
+    }
+    .pdf-export-mode table.ee-table {
+      font-size: 10.5px !important;
+      width: 100% !important;
+      table-layout: fixed !important;
+    }
+    .pdf-export-mode table.ee-table th,
+    .pdf-export-mode table.ee-table td {
+      padding: 6px 7px !important;
+      word-wrap: break-word !important;
+    }
+    .pdf-export-mode .notes-box {
+      margin-top: 12px !important;
+      padding-top: 10px !important;
+      font-size: 10px !important;
+      line-height: 1.35 !important;
+    }
+    .pdf-export-mode .notes-box li {
+      margin-bottom: 2px !important;
+    }
+    .pdf-export-mode .sig-grid {
+      margin-top: 14px !important;
+      font-size: 10.5px !important;
+    }
+    .pdf-export-mode .sig-line {
+      margin-top: 20px !important;
+    }
+
     /* Remove spinner arrows */
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -836,7 +893,6 @@
       -moz-appearance: textfield;
     }
 
-    /* A4 Printable Rules */
     @page {
       size: A4 portrait;
       margin: 12mm;
@@ -870,16 +926,6 @@
         padding: 0 !important;
         font-weight: 600 !important;
         color: #000000 !important;
-      }
-      table.ee-table {
-        font-size: 9pt !important;
-      }
-      table.ee-table th,
-      table.ee-table td {
-        padding: 5px 7px !important;
-      }
-      table.ee-table tr {
-        break-inside: avoid;
       }
     }
   </style>
@@ -1153,12 +1199,12 @@
             <table class="ee-table">
               <thead>
                 <tr>
-                  <th style="width:48px;">Item</th>
+                  <th style="width:42px;">Item</th>
                   <th>Description</th>
-                  <th class="text-center" style="width:54px;">QTY</th>
-                  <th class="text-center" style="width:54px;">Unit</th>
-                  <th class="text-right" style="width:94px;">Unit Price</th>
-                  <th class="text-right" style="width:106px;">Total Price</th>
+                  <th class="text-center" style="width:46px;">QTY</th>
+                  <th class="text-center" style="width:46px;">Unit</th>
+                  <th class="text-right" style="width:88px;">Unit Price</th>
+                  <th class="text-right" style="width:98px;">Total Price</th>
                 </tr>
               </thead>
               <tbody id="bomTableBody">
@@ -1169,7 +1215,7 @@
                   <td colspan="5" class="text-right" style="text-transform:uppercase;letter-spacing:0.03em;">
                     Total Offer (PHP)
                   </td>
-                  <td class="text-right mono" style="font-size:14px;" id="bomGrandTotal">
+                  <td class="text-right mono" style="font-size:13px;" id="bomGrandTotal">
                     ₱0.00
                   </td>
                 </tr>
@@ -1214,9 +1260,6 @@
   </main>
 
   <script>
-    // =========================================================================
-    // 1. PWA ICON GENERATOR & MANIFEST REGISTRATION (iOS, Android, Windows, Mac)
-    // =========================================================================
     function generateHornetAppIcon(size) {
       const canvas = document.createElement('canvas');
       canvas.width = size;
@@ -1286,9 +1329,6 @@
       } catch (e) {}
     }
 
-    // =========================================================================
-    // 2. FIXED AUTOMATIC ENGINEERING RATES (PHP)
-    // =========================================================================
     const RATES = {
       kw7: {
         label: '7kW Single Phase (230V, 32A)',
@@ -1537,7 +1577,6 @@
       }).join('');
     }
 
-    // Event Listeners
     document.querySelectorAll('.qty-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         const targetId = btn.getAttribute('data-target');
@@ -1597,7 +1636,7 @@
       buildEstimate();
     });
 
-    // Direct A4 PDF Download Handler (Fixed for iOS Safari/Chrome Viewport & Logo Rendering)
+    // Direct 1-Page A4 PDF Download Handler (Fixed Left-Edge Alignment & Single-Page Fit)
     async function downloadA4Pdf() {
       const btn = el.printBtn;
       const btnLabel = document.getElementById('printBtnLabel');
@@ -1608,47 +1647,43 @@
       btn.disabled = true;
       btnLabel.textContent = 'Generating PDF...';
 
-      // Keep wrapper inside visible viewport so iOS WebKit renders non-blank canvas
+      const prevScrollX = window.scrollX;
+      const prevScrollY = window.scrollY;
+      window.scrollTo(0, 0);
+
       const wrapper = document.createElement('div');
-      wrapper.style.cssText = 'position:fixed;left:0;top:0;width:794px;background:#FFFFFF;padding:24px 28px;color:#0F172A;z-index:9999;pointer-events:none;opacity:0.01;';
+      wrapper.style.cssText = 'position:absolute;left:0;top:0;width:720px;background:#FFFFFF;padding:0;margin:0;color:#0F172A;z-index:99999;pointer-events:none;opacity:0.01;';
 
       const clone = sourceSheet.cloneNode(true);
-      clone.style.border = 'none';
-      clone.style.boxShadow = 'none';
-      clone.style.padding = '0';
-      clone.style.borderRadius = '0';
-      clone.style.width = '100%';
+      clone.classList.add('pdf-export-mode');
 
-      // Replace inline SVG logo with crisp PNG image in clone to prevent iOS html2canvas blank bug
       const logoDiv = clone.querySelector('#docLogoContainer');
       if (logoDiv) {
         const img = document.createElement('img');
         img.src = generateHornetAppIcon(120);
-        img.style.cssText = 'width:38px;height:38px;display:block;border-radius:6px;';
+        img.style.cssText = 'width:34px;height:34px;display:block;border-radius:6px;';
         logoDiv.innerHTML = '';
         logoDiv.appendChild(img);
       }
 
-      // Convert <input> fields inside clone into static text spans
       const origInputs = sourceSheet.querySelectorAll('input.doc-input');
       const cloneInputs = clone.querySelectorAll('input.doc-input');
       cloneInputs.forEach(function(inp, idx) {
         const span = document.createElement('span');
         span.textContent = origInputs[idx] ? origInputs[idx].value : inp.value;
-        span.style.cssText = 'font-weight:600;color:#0F172A;font-size:12px;';
+        span.style.cssText = 'font-weight:600;color:#0F172A;font-size:11px;';
         inp.parentNode.replaceChild(span, inp);
       });
 
       wrapper.appendChild(clone);
       document.body.appendChild(wrapper);
 
-      // Allow DOM & image paint tick before capturing
-      await new Promise(function(resolve) { setTimeout(resolve, 120); });
+      await new Promise(function(resolve) { setTimeout(resolve, 150); });
 
       try {
         if (typeof html2pdf !== 'undefined') {
           const opt = {
-            margin: [8, 8, 8, 8],
+            margin: [10, 10, 10, 10],
             filename: filename,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
@@ -1656,12 +1691,14 @@
               useCORS: true,
               logging: false,
               backgroundColor: '#FFFFFF',
+              x: 0,
+              y: 0,
               scrollX: 0,
               scrollY: 0,
-              windowWidth: 794
+              width: 720,
+              windowWidth: 760
             },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
           };
 
           const worker = html2pdf().set(opt).from(clone);
@@ -1696,6 +1733,7 @@
         } catch (e) {}
       } finally {
         wrapper.remove();
+        window.scrollTo(prevScrollX, prevScrollY);
         btn.disabled = false;
         btnLabel.textContent = 'Download A4 PDF';
       }
