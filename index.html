@@ -826,10 +826,10 @@
       color: var(--he-muted);
     }
 
-    /* PDF Clone Compact 1-Page A4 Overrides */
+    /* PDF Clone Compact 1-Page A4 Overrides (Exact 660px Fit) */
     .pdf-export-mode {
-      width: 720px !important;
-      max-width: 720px !important;
+      width: 660px !important;
+      max-width: 660px !important;
       padding: 0 !important;
       margin: 0 !important;
       border: none !important;
@@ -841,46 +841,65 @@
       flex-direction: row !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding-bottom: 10px !important;
+      padding-bottom: 8px !important;
+      gap: 8px !important;
+    }
+    .pdf-export-mode .doc-company {
+      font-size: 15px !important;
+    }
+    .pdf-export-mode .doc-legal {
+      font-size: 10px !important;
+    }
+    .pdf-export-mode .doc-type {
+      font-size: 10.5px !important;
+    }
+    .pdf-export-mode .doc-ref {
+      font-size: 10px !important;
     }
     .pdf-export-mode .doc-ref-wrap {
       text-align: right !important;
+      flex-shrink: 0 !important;
     }
     .pdf-export-mode .meta-grid {
       grid-template-columns: 1fr 1fr !important;
-      gap: 6px 16px !important;
-      padding: 10px 0 !important;
-      font-size: 11px !important;
+      gap: 5px 14px !important;
+      padding: 8px 0 !important;
+      font-size: 10.5px !important;
+    }
+    .pdf-export-mode .meta-label {
+      width: 56px !important;
     }
     .pdf-export-mode .table-wrap {
-      margin-top: 10px !important;
+      margin-top: 8px !important;
       overflow: visible !important;
     }
     .pdf-export-mode table.ee-table {
-      font-size: 10.5px !important;
-      width: 100% !important;
+      font-size: 10px !important;
+      width: 660px !important;
+      max-width: 660px !important;
       table-layout: fixed !important;
     }
     .pdf-export-mode table.ee-table th,
     .pdf-export-mode table.ee-table td {
-      padding: 6px 7px !important;
+      padding: 5px 6px !important;
       word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
     }
     .pdf-export-mode .notes-box {
-      margin-top: 12px !important;
-      padding-top: 10px !important;
-      font-size: 10px !important;
+      margin-top: 10px !important;
+      padding-top: 8px !important;
+      font-size: 9.5px !important;
       line-height: 1.35 !important;
     }
     .pdf-export-mode .notes-box li {
       margin-bottom: 2px !important;
     }
     .pdf-export-mode .sig-grid {
-      margin-top: 14px !important;
-      font-size: 10.5px !important;
+      margin-top: 12px !important;
+      font-size: 10px !important;
     }
     .pdf-export-mode .sig-line {
-      margin-top: 20px !important;
+      margin-top: 18px !important;
     }
 
     /* Remove spinner arrows */
@@ -895,7 +914,7 @@
 
     @page {
       size: A4 portrait;
-      margin: 12mm;
+      margin: 10mm;
     }
 
     @media print {
@@ -1199,12 +1218,12 @@
             <table class="ee-table">
               <thead>
                 <tr>
-                  <th style="width:42px;">Item</th>
+                  <th style="width:38px;">Item</th>
                   <th>Description</th>
-                  <th class="text-center" style="width:46px;">QTY</th>
-                  <th class="text-center" style="width:46px;">Unit</th>
-                  <th class="text-right" style="width:88px;">Unit Price</th>
-                  <th class="text-right" style="width:98px;">Total Price</th>
+                  <th class="text-center" style="width:42px;">QTY</th>
+                  <th class="text-center" style="width:42px;">Unit</th>
+                  <th class="text-right" style="width:84px;">Unit Price</th>
+                  <th class="text-right" style="width:92px;">Total Price</th>
                 </tr>
               </thead>
               <tbody id="bomTableBody">
@@ -1215,7 +1234,7 @@
                   <td colspan="5" class="text-right" style="text-transform:uppercase;letter-spacing:0.03em;">
                     Total Offer (PHP)
                   </td>
-                  <td class="text-right mono" style="font-size:13px;" id="bomGrandTotal">
+                  <td class="text-right mono" style="font-size:12px;" id="bomGrandTotal">
                     ₱0.00
                   </td>
                 </tr>
@@ -1636,7 +1655,7 @@
       buildEstimate();
     });
 
-    // Direct 1-Page A4 PDF Download Handler (Fixed Left-Edge Alignment & Single-Page Fit)
+    // Direct 1-Page A4 PDF Download Handler (Exact 660px Fit — No Right-Edge Clipping)
     async function downloadA4Pdf() {
       const btn = el.printBtn;
       const btnLabel = document.getElementById('printBtnLabel');
@@ -1652,7 +1671,7 @@
       window.scrollTo(0, 0);
 
       const wrapper = document.createElement('div');
-      wrapper.style.cssText = 'position:absolute;left:0;top:0;width:720px;background:#FFFFFF;padding:0;margin:0;color:#0F172A;z-index:99999;pointer-events:none;opacity:0.01;';
+      wrapper.style.cssText = 'position:absolute;left:0;top:0;width:660px;background:#FFFFFF;padding:0;margin:0;color:#0F172A;z-index:99999;pointer-events:none;opacity:0.01;';
 
       const clone = sourceSheet.cloneNode(true);
       clone.classList.add('pdf-export-mode');
@@ -1671,7 +1690,7 @@
       cloneInputs.forEach(function(inp, idx) {
         const span = document.createElement('span');
         span.textContent = origInputs[idx] ? origInputs[idx].value : inp.value;
-        span.style.cssText = 'font-weight:600;color:#0F172A;font-size:11px;';
+        span.style.cssText = 'font-weight:600;color:#0F172A;font-size:10.5px;';
         inp.parentNode.replaceChild(span, inp);
       });
 
@@ -1683,7 +1702,7 @@
       try {
         if (typeof html2pdf !== 'undefined') {
           const opt = {
-            margin: [10, 10, 10, 10],
+            margin: [8, 8, 8, 8],
             filename: filename,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
@@ -1695,8 +1714,8 @@
               y: 0,
               scrollX: 0,
               scrollY: 0,
-              width: 720,
-              windowWidth: 760
+              width: 660,
+              windowWidth: 720
             },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
           };
